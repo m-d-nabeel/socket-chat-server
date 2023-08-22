@@ -111,7 +111,7 @@ const getRooms = async (req: Request, res: Response) => {
     const roomsRef = db.collection("rooms");
     const roomsSnapshot = await roomsRef.get();
 
-    const rooms = await Promise.all(
+    const rooms: any = await Promise.all(
       roomsSnapshot.docs.map(async (doc) => {
         const data = doc.data();
         let totalParticipants = 0;
