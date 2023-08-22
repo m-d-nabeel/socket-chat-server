@@ -23,7 +23,7 @@ const roomMessageBatches: Record<string, FirebaseFirestore.DocumentData[]> = {};
 export const setupSocket = (httpServer: any) => {
   const io = new Server(httpServer, {
     cors: {
-      origin: "http://localhost:5173",
+      origin: process.env.FRONTEND_PUBLIC_URL || "http://localhost:5173",
     },
   });
   const roomSubscriptions: Record<string, () => void> = {};
