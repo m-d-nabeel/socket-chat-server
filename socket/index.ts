@@ -7,6 +7,7 @@ import {
   updateUserSocketId,
   updateUserStatus,
 } from "../utils/socket-utils";
+import { FRONTEND_URL } from "..";
 
 interface SocketUserProps {
   user: {
@@ -21,11 +22,7 @@ interface SocketUserProps {
 const roomMessageBatches: Record<string, FirebaseFirestore.DocumentData[]> = {};
 
 export const setupSocket = (httpServer: any) => {
-  const io = new Server(httpServer, {
-    cors: {
-      origin: process.env.FRONTEND_PUBLIC_URL || "http://localhost:5173",
-    },
-  });
+  const io = new Server(httpServer, { cors: { origin: FRONTEND_URL } });
   const roomSubscriptions: Record<string, () => void> = {};
 
   // cache subscription
