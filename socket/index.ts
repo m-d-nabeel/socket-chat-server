@@ -120,7 +120,7 @@ export const setupSocket = (httpServer: any) => {
       batchArray.push(messageData);
 
       // If the batch array size exceeds the maximum batch size, write to the database
-      const MAX_BATCH_SIZE = 10;
+      const MAX_BATCH_SIZE = 5;
       if (batchArray.length >= MAX_BATCH_SIZE) {
         const batch = db.batch();
         batchArray.forEach((msg) => {
@@ -131,7 +131,6 @@ export const setupSocket = (httpServer: any) => {
         try {
           // Commit the batch write
           await batch.commit();
-
           // Clear the batch array
           roomMessageBatches[roomId] = [];
         } catch (error) {

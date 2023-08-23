@@ -22,6 +22,7 @@ app.use(
     origin: ["https://socket-chat-phi.vercel.app", "http://localhost:5173"],
   })
 );
+
 app.use("/user/token", authenticate, tokenRouter);
 app.use("/room", authenticate, roomRouter);
 app.use("/user", userRouter);
