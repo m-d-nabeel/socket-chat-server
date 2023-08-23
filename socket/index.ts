@@ -22,7 +22,7 @@ interface SocketUserProps {
 const roomMessageBatches: Record<string, FirebaseFirestore.DocumentData[]> = {};
 
 export const setupSocket = (httpServer: any) => {
-  const io = new Server(httpServer, { cors: { origin: FRONTEND_URL } });
+  const io = new Server(httpServer, { cors: { origin: "*" } });
   const roomSubscriptions: Record<string, () => void> = {};
 
   // cache subscription
