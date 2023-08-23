@@ -7,7 +7,6 @@ import {
   updateUserSocketId,
   updateUserStatus,
 } from "../utils/socket-utils";
-import { FRONTEND_URL } from "..";
 
 interface SocketUserProps {
   user: {
@@ -22,7 +21,11 @@ interface SocketUserProps {
 const roomMessageBatches: Record<string, FirebaseFirestore.DocumentData[]> = {};
 
 export const setupSocket = (httpServer: any) => {
-  const io = new Server(httpServer, { cors: { origin: "*" } });
+  const io = new Server(httpServer, {
+    cors: {
+      origin: ["https://socket-chat-phi.vercel.app", "http://localhost:5173"],
+    },
+  });
   const roomSubscriptions: Record<string, () => void> = {};
 
   // cache subscription
