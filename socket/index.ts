@@ -23,7 +23,11 @@ const roomMessageBatches: Record<string, FirebaseFirestore.DocumentData[]> = {};
 export const setupSocket = (httpServer: any) => {
   const io = new Server(httpServer, {
     cors: {
-      origin: ["https://socket-chat-phi.vercel.app", "http://localhost:5173"],
+      origin: [
+        "https://socket-chat-phi.vercel.app",
+        "http://localhost:5173",
+        "https://socket-client-seven.vercel.app",
+      ],
     },
   });
   const roomSubscriptions: Record<string, () => void> = {};

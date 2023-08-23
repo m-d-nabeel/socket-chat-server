@@ -19,7 +19,11 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(
   cors({
-    origin: ["https://socket-chat-phi.vercel.app", "http://localhost:5173"],
+    origin: [
+      "https://socket-chat-phi.vercel.app",
+      "http://localhost:5173",
+      "https://socket-client-seven.vercel.app",
+    ],
   })
 );
 
